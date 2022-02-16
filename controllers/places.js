@@ -1,28 +1,7 @@
 const router = require('express').Router()
+const places = require('../models/places')
 
 router.get('/', (req, res) => {
-    let places = [{
-        name: 'H-Thai-ML',
-        city: 'Seattle',
-        state: 'WA',
-        cuisines: 'Thai, Pan-Asian',
-        pic: '/images/h-thai-ml.jpg',
-        source: "https://unsplash.com/@jaywennington?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-        sourceName: 'Jay Wennington',
-        source2: "https://unsplash.com/s/photos/thai-restaraunt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-        source2Site: 'Unsplash'  
-      }, {
-        name: 'Coding Cat Cafe',
-        city: 'Phoenix',
-        state: 'AZ',
-        cuisines: 'Coffee, Bakery',
-        pic: 'images/cat-cafe.jpg',
-        source: "https://unsplash.com/@rebaspike?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-        sourceName: 'Reba Spike',
-        source2: "https://unsplash.com/s/photos/cat-cafe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-        source2Site: 'Unsplash'
-  
-      }]
     res.render('places/index', {places})
 })
 
@@ -31,7 +10,17 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  res.send("Hello")
+  if (!req.body.pic) {
+    req.body.pic = 'http://placekitten.com/400/400'
+  }
+  if (!req.body.city) {
+    req.body.city = 'Anytown'
+  }
+  if (!req.body.state) {
+    req.body.state = 'USA'
+  }
+  places.push(req.body)
+  res.redirect('/places')
 })
 
 module.exports = router
