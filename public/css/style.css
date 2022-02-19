@@ -14,6 +14,10 @@ h1 {
     color: cornflowerblue;
   }
 
+h2 {
+  color: rgb(98, 240, 250);
+}
+
 img {
     height: 40vh;
 }
@@ -41,4 +45,14 @@ nav a {
 nav a:hover {
   color: pink;
   text-decoration: none;
+}
+
+.show-container {
+  display: inline-block;
+  width: auto;
+}
+
+.show-image, .show-text {
+  display: inline-block;
+  width: 46%;
 }
