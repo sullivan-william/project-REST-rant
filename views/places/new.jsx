@@ -13,7 +13,7 @@ function newForm () {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='pic'>Place Picture</label>
-                        <input className='form-control' type='url' id='pic' name='pic'/>
+                        <input className='form-control' id='pic' name='pic'/>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='city'>City</label>
