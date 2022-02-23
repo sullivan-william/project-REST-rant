@@ -1,21 +1,28 @@
-module.exports = [{
-    name: 'H-Thai-ML',
-    city: 'Seattle',
-    state: 'WA',
-    cuisines: 'Thai, Pan-Asian',
-    pic: '/images/h-thai-ml.jpg',
-    source: "https://unsplash.com/@jaywennington?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-    sourceName: 'Jay Wennington',
-    source2: "https://unsplash.com/s/photos/thai-restaraunt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-    source2Site: 'Unsplash'
-}, {
-    name: 'Coding Cat Cafe',
-    city: 'Phoenix',
-    state: 'AZ',
-    cuisines: 'Coffee, Bakery',
-    pic: '/images/cat-cafe.jpg',
-    source: "https://unsplash.com/@rebaspike?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-    sourceName: 'Reba Spike',
-    source2: "https://unsplash.com/s/photos/cat-cafe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-    source2Site: 'Unsplash'
-}]
+const mongoose = require('mongoose')
+
+const placeSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    pic: {
+        type: String
+    },
+    cuisines: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        default: "Anytown"
+    },
+    state: {
+        type: String,
+        default: "USA"
+    },
+    founded: {
+        type: Number
+    }
+})
+
+module.exports = mongoose.model('Place', placeSchema)

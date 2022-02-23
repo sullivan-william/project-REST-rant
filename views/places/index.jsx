@@ -15,9 +15,9 @@ function index(data) {
                 <p>
                     Located in {place.city}, {place.state}
                 </p>
-                <div>
+                {/* <div>
                 Photo by <a href={place.source}>{place.sourceName}</a> on <a href={place.source2}>{place.source2Site}</a>
-                </div>
+                </div> */}
             </div>
         )
     })
