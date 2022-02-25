@@ -6,7 +6,8 @@ const placeSchema = new mongoose.Schema({
         required: true
     },
     pic: {
-        type: String
+        type: String,
+        default: "http://placekitten.com/350/350"
     },
     cuisines: {
         type: String,
@@ -21,7 +22,9 @@ const placeSchema = new mongoose.Schema({
         default: "USA"
     },
     founded: {
-        type: Number
+        type: Number,
+        min: [0, "Really?"],
+        max: [new Date().getFullYear(), "Fuuuuturrrrre"]
     }
 })
 
