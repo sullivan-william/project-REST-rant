@@ -26,7 +26,11 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
-    .then(place => res.render('places/show', { place }))
+    .populate('comments')
+    .then(place => {
+      console.log(place.comments)
+      res.render('places/show', { place })
+    })
     .catch(e => {
       console.log(e)
       res.render('error404')
