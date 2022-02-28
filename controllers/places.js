@@ -77,7 +77,7 @@ router.post('/:id/comment', (req, res) => {
     .then(place => {
       db.Comment.create(req.body)
         .then(comment => {
-          place.comment.push(comment.id)
+          place.comments.push(comment.id)
           place.save()
             .then(() => {
               res.redirect(`/places/${req.params.id}`)
@@ -89,10 +89,9 @@ router.post('/:id/comment', (req, res) => {
         })
     })
     .catch(e => {
-      // console.log(e)
+      console.log(e)
       res.render('error404')
     })
-  // res.send('GET /comment stub')
   console.log(req.body)
 })
 
