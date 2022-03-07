@@ -58,6 +58,7 @@ router.put('/:id', (req, res) => {
       res.redirect(`/places/${req.params.id}`)
     })
     .catch(e => {
+      console.log(e)
       res.render('error404')
     })
 })
@@ -67,6 +68,10 @@ router.delete('/:id', (req, res) => {
   db.Place.findByIdAndDelete(req.params.id)
     .then(deletedPlace => {
       res.status(303).redirect('/places')
+    })
+    .catch(e => {
+      console.log(e)
+      res.render('error404')
     })
 })
 

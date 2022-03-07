@@ -39,7 +39,7 @@ function show (data) {
         <Def>
           <main className='show-container'>
             <h1>{ data.place.name }</h1>
-            <img className='show-image' src={data.place.pic} alt={data.place.name}></img>
+            <img className='show-image' src={`../${data.place.pic}`} alt={data.place.name}></img>
             <h3>Located in {data.place.city}, {data.place.state}</h3>
             <div className='show-text'>
               <h2>Rating</h2>
