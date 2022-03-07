@@ -24,10 +24,14 @@ function show (data) {
     let sumRating = data.place.comments.reduce((tot, c) => {
       return tot + c.stars
     }, 0)
-    let averageRating = sumRating / data.place.comments.length
+    let averageRating = Math.round(sumRating / data.place.comments.length)
+    let stars = ''
+    for (let i = 0; i < averageRating; i++) {
+      stars += '⭐️'
+    }
     rating = (
       <h3>
-        {Math.round(averageRating)} stars
+        {stars} stars
       </h3>
     )
   }
