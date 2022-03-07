@@ -5,6 +5,11 @@ function show (data) {
   let comments = (
     <h3 className='inactive'>No Comments Yet!</h3>
   )
+  let rating = (
+    <h3 className='inactive'>
+      Not Yet Rated
+    </h3>
+  )
   if (data.place.comments.length) {
     comments = data.place.comments.map(c => {
       return (
@@ -16,6 +21,15 @@ function show (data) {
         </div>
       )
     })
+    let sumRating = data.place.comments.reduce((tot, c) => {
+      return tot + c.stars
+    }, 0)
+    let averageRating = sumRating / data.place.comments.length
+    rating = (
+      <h3>
+        {Math.round(averageRating)} stars
+      </h3>
+    )
   }
     return (
         <Def>
@@ -25,7 +39,7 @@ function show (data) {
             <h3>Located in {data.place.city}, {data.place.state}</h3>
             <div className='show-text'>
               <h2>Rating</h2>
-              <p>Not Rated</p>
+              {rating}
               <h2>Description</h2>
               <h3>{data.place.showEstablished()}</h3>
               <h4>Serving {data.place.cuisines}</h4>
